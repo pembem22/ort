@@ -455,6 +455,11 @@ fn prepare_libort_dir() -> (PathBuf, bool) {
 						println!("cargo:rustc-link-lib=static=absl_log_internal_proto");
 						println!("cargo:rustc-link-lib=static=absl_log_internal_globals");
 						optional_link_lib(&abseil_lib_log_dir, "absl_log_internal_check_op");
+						optional_link_lib(&abseil_lib_log_dir, "absl_log_internal_conditions");
+						optional_link_lib(&abseil_lib_log_dir, "absl_log_internal_fnmatch");
+						optional_link_lib(&abseil_lib_log_dir, "absl_log_internal_nullguard");
+						optional_link_lib(&abseil_lib_log_dir, "absl_log_internal_structured_proto");
+						optional_link_lib(&abseil_lib_log_dir, "absl_vlog_config_internal");
 						println!("cargo:rustc-link-lib=static=absl_log_internal_log_sink_set");
 						println!("cargo:rustc-link-lib=static=absl_log_sink");
 						println!("cargo:rustc-link-lib=static=absl_log_internal_message");
