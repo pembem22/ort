@@ -411,16 +411,9 @@ fn prepare_libort_dir() -> (PathBuf, bool) {
 						println!("cargo:rustc-link-lib=static=absl_demangle_internal");
 						println!("cargo:rustc-link-lib=static=absl_demangle_rust");
 						println!("cargo:rustc-link-lib=static=absl_examine_stack");
-						let abseil_lib_debug_dir = if !has_vcpkg_link {
-							let dir = transform_dep(external_lib_dir.join("abseil_cpp-build").join("absl").join("debugging"), &profile);
-							add_search_dir(&dir);
-							dir
-						} else {
-							vcpkg_lib_dir.clone().unwrap()
-						};
-                        optional_link_lib(&abseil_lib_debug_dir, "absl_leak_check");
-						optional_link_lib(&abseil_lib_debug_dir, "absl_stacktrace");
-						optional_link_lib(&abseil_lib_debug_dir, "absl_symbolize");
+						println!("cargo:rustc-link-lib=static=absl_leak_check");
+						println!("cargo:rustc-link-lib=static=absl_stacktrace");
+						println!("cargo:rustc-link-lib=static=absl_symbolize");
 						println!("cargo:rustc-link-lib=static=absl_utf8_for_code_point");
 						add_search_dir(transform_dep(external_lib_dir.join("abseil_cpp-build").join("absl").join("base"), &profile));
 						println!("cargo:rustc-link-lib=static=absl_base");
